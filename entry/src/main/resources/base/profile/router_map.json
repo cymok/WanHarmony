@@ -1,0 +1,52 @@
+{
+  "routerMap": [
+    {
+      "name": "SecondPage",
+      "pageSourceFile": "src/main/ets/pages/test/SecondPage.ets",
+      "buildFunction": "SecondPageBuilder",
+      "data": {
+        "description": "this is SecondPage"
+      }
+    },
+    {
+      "name": "ThirdPage",
+      "pageSourceFile": "src/main/ets/pages/test/ThirdPage.ets",
+      "buildFunction": "ThirdPageBuilder",
+      "data": {
+        "description": "this is ThirdPage"
+      }
+    },
+    {
+      "name": "LoginPage",
+      "pageSourceFile": "src/main/ets/pages/LoginPage.ets",
+      "buildFunction": "LoginPageBuilder",
+      "data": {
+        "description": "this is LoginPage"
+      }
+    },
+    {
+      "name": "SettingsPage",
+      "pageSourceFile": "src/main/ets/pages/SettingsPage.ets",
+      "buildFunction": "SettingsPageBuilder",
+      "data": {
+        "description": "this is SettingsPage"
+      }
+    },
+    {
+      "name": "WebPage",
+      "pageSourceFile": "src/main/ets/pages/WebPage.ets",
+      "buildFunction": "WebPageBuilder",
+      "data": {
+        "description": "this is WebPage"
+      }
+    },
+    {
+      "name": "SearchPage",
+      "pageSourceFile": "src/main/ets/pages/SearchPage.ets",
+      "buildFunction": "SearchPageBuilder",
+      "data": {
+        "description": "this is SearchPage"
+      }
+    }
+  ]
+}

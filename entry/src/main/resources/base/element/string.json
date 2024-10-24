@@ -1,0 +1,39 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "$string:app_name"
+    },
+
+    {
+      "name": "Network_Reason",
+      "value": "请求网络进行数据同步"
+    },
+
+    {
+      "name": "tab0",
+      "value": "微信"
+    },
+    {
+      "name": "tab1",
+      "value": "通讯录"
+    },
+    {
+      "name": "tab2",
+      "value": "发现"
+    },
+    {
+      "name": "tab3",
+      "value": "我"
+    }
+
+  ]
+}
