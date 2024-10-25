@@ -1,4 +1,4 @@
-# 一款 HarmonyOS Next 5.0 版的 WanAndroid App
+# 一款 HarmonyOS 5.0.0(12) 版的 WanAndroid App
 
 api 和官方网站 <https://www.wanandroid.com>
 
@@ -9,22 +9,28 @@ api 和官方网站 <https://www.wanandroid.com>
 ### 手机端
 
 <div style="display: flex; justify-content: space-between;">
-    <img src="pictrue/pic_phone.png" width="32%" style="border: 2px solid black;">
-    <img src="pictrue/pic_phone2.png" width="32%" style="border: 2px solid black;">
-    <img src="pictrue/pic_phone3.png" width="32%" style="border: 2px solid black;">
+    <img src="pictrue/pic_phone.png" width="32%">
+    <img src="pictrue/pic_phone2.png" width="32%">
+    <img src="pictrue/pic_phone3.png" width="32%">
 </div>
+
+### 折叠屏
+
+<img src="pictrue/pic_foldable.png" width="512">
+
+<img src="pictrue/pic_foldable2.png" width="512">
 
 ### 平板端
 
-<img src="pictrue/pic_tablet.png" width="768" height="480" style="border: 2px solid black;">
+<img src="pictrue/pic_tablet.png" width="768">
 
-<img src="pictrue/pic_tablet2.png" width="768" height="480" style="border: 2px solid black;">
+<img src="pictrue/pic_tablet2.png" width="768">
 
 <!-- 0.3 倍缩放 -->
 
 ### others
 
-<img src="pictrue/pic_code.png" alt="Alt text" width="768" height="480">
+<img src="pictrue/pic_code.png" alt="Alt text" width="1080">
 
 ## todo
 
