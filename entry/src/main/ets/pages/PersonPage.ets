@@ -19,43 +19,52 @@ export struct PersonComponent {
   build() {
     Scroll() {
       Column() {
-        Row() {
+        Flex({ alignItems: ItemAlign.Center }) {
           Image(this.supperUserInfo?.userInfo.icon ? this.supperUserInfo?.userInfo.icon : $r("app.media.app_icon"))
-            .width(80)
-            .height(80)
             .borderRadius(10)
-            .margin({ left: 20 })
+            .width(80)
+            .aspectRatio(1)// 1:1
+            .flexShrink(3)
+
           Column() {
             Text(this.supperUserInfo?.userInfo.nickname ? this.supperUserInfo?.userInfo.nickname : "未登录")
-            Row() {
-              Text(`用户名：${this.supperUserInfo?.userInfo.username ? this.supperUserInfo?.userInfo.username : "null"}`)
+
+            Flex({ wrap: FlexWrap.Wrap }) {
+              Text(`用户名：${this.supperUserInfo?.userInfo.username ? this.supperUserInfo?.userInfo.username :
+                "null"}`)
                 .fontSize(14)
                 .fontColor($r("app.color.secondaryText"))
+                .margin({ right: 20, top: 10 })
               Text(`ID：${this.supperUserInfo?.userInfo.id ? this.supperUserInfo?.userInfo.id : "-1"}`)
                 .fontSize(14)
                 .fontColor($r("app.color.secondaryText"))
-                .margin({ left: 20 })
+                .margin({ top: 10 })
             }
-            .margin({ top: 20 })
+            .margin({ top: 10 })
 
             Text(`邮箱：${this.supperUserInfo?.userInfo.email ? this.supperUserInfo?.userInfo.email : "null"}`)
               .fontSize(14)
               .fontColor($r("app.color.secondaryText"))
               .margin({ top: 20 })
           }
+          .padding({ left: 10, right: 10 })
+          .flexBasis('auto')
+          .width("60%")
           .alignItems(HorizontalAlign.Start)
-          .layoutWeight(1)
-          .margin({ left: 20 })
+          .layoutWeight(1) // 撑满剩余宽度
 
           Image($r("app.media.icon_arrow_right"))
             .width(20)
-            .height(20)
-            .margin({ left: 20 })
+            .aspectRatio(1)
         }
         .width("100%")
-        .height("30%")
         .backgroundColor(Color.White)
-        .padding(16)
+        .padding({
+          left: 16,
+          right: 16,
+          top: 40,
+          bottom: 30,
+        })
         .onClick(() => {
           if (!this.supperUserInfo) {
             AlertDialog.show(
@@ -96,18 +105,23 @@ export struct PersonComponent {
 
         Row() {
           Text("积分排行")
-          Blank()
-          Text(`积分：${this.supperUserInfo?.coinInfo?.coinCount ? this.supperUserInfo?.coinInfo?.coinCount : "-1"}`)
-            .fontSize(14)
-            .fontColor($r("app.color.secondaryText"))
-          Text(`排行：${this.supperUserInfo?.coinInfo?.rank ? this.supperUserInfo?.coinInfo?.rank : "-1"}`)
-            .fontSize(14)
-            .fontColor($r("app.color.secondaryText"))
-            .margin({ left: 10 })
+            .fontSize(16)
+          Flex({ direction: FlexDirection.Row, wrap: FlexWrap.Wrap, justifyContent: FlexAlign.End }) {
+            Text(`积分：${this.supperUserInfo?.coinInfo?.coinCount ? this.supperUserInfo?.coinInfo?.coinCount : "-1"}`)
+              .fontSize(14)
+              .fontColor($r("app.color.secondaryText"))
+              .margin({ left: 10 })
+            Text(`排行：${this.supperUserInfo?.coinInfo?.rank ? this.supperUserInfo?.coinInfo?.rank : "-1"}`)
+              .fontSize(14)
+              .fontColor($r("app.color.secondaryText"))
+              .margin({ left: 10 })
+          }
+          .layoutWeight(1)
+
           Image($r("app.media.icon_arrow_right"))
             .width(20)
             .height(20)
-            .margin({ left: 10 })
+            .margin({ left: 5 })
         }
         .width("100%")
         .height("10%")
@@ -131,7 +145,7 @@ export struct PersonComponent {
           Image($r("app.media.icon_arrow_right"))
             .width(20)
             .height(20)
-            .margin({ left: 10 })
+            .margin({ left: 5 })
         }
         .width("100%")
         .height("10%")
@@ -150,7 +164,7 @@ export struct PersonComponent {
           Image($r("app.media.icon_arrow_right"))
             .width(20)
             .height(20)
-            .margin({ left: 10 })
+            .margin({ left: 5 })
         }
         .width("100%")
         .height("10%")
@@ -169,7 +183,7 @@ export struct PersonComponent {
           Image($r("app.media.icon_arrow_right"))
             .width(20)
             .height(20)
-            .margin({ left: 10 })
+            .margin({ left: 5 })
         }
         .width("100%")
         .height("10%")
@@ -188,7 +202,7 @@ export struct PersonComponent {
           Image($r("app.media.icon_arrow_right"))
             .width(20)
             .height(20)
-            .margin({ left: 10 })
+            .margin({ left: 5 })
         }
         .width("100%")
         .height("10%")
@@ -207,7 +221,7 @@ export struct PersonComponent {
           Image($r("app.media.icon_arrow_right"))
             .width(20)
             .height(20)
-            .margin({ left: 10 })
+            .margin({ left: 5 })
         }
         .width("100%")
         .height("10%")

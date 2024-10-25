@@ -37,7 +37,7 @@ export struct SettingsPage {
             Image($r("app.media.icon_arrow_right"))
               .width(20)
               .height(20)
-              .margin({ left: 10 })
+              .margin({ left: 5 })
           }
           .width("100%")
           .height("10%")
@@ -55,7 +55,7 @@ export struct SettingsPage {
             Image($r("app.media.icon_arrow_right"))
               .width(20)
               .height(20)
-              .margin({ left: 10 })
+              .margin({ left: 5 })
           }
           .width("100%")
           .height("10%")
@@ -77,7 +77,7 @@ export struct SettingsPage {
             Image($r("app.media.icon_arrow_right"))
               .width(20)
               .height(20)
-              .margin({ left: 10 })
+              .margin({ left: 5 })
           }
           .width("100%")
           .height("10%")
@@ -100,7 +100,7 @@ export struct SettingsPage {
             Image($r("app.media.icon_arrow_right"))
               .width(20)
               .height(20)
-              .margin({ left: 10 })
+              .margin({ left: 5 })
           }
           .width("100%")
           .height("10%")
@@ -119,7 +119,7 @@ export struct SettingsPage {
             Image($r("app.media.icon_arrow_right"))
               .width(20)
               .height(20)
-              .margin({ left: 10 })
+              .margin({ left: 5 })
           }
           .width("100%")
           .height("10%")
@@ -138,7 +138,7 @@ export struct SettingsPage {
             Image($r("app.media.icon_arrow_right"))
               .width(20)
               .height(20)
-              .margin({ left: 10 })
+              .margin({ left: 5 })
           }
           .width("100%")
           .height("10%")
@@ -160,7 +160,7 @@ export struct SettingsPage {
             Image($r("app.media.icon_arrow_right"))
               .width(20)
               .height(20)
-              .margin({ left: 10 })
+              .margin({ left: 5 })
           }
           .width("100%")
           .height("10%")

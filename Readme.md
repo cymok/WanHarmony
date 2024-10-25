@@ -110,3 +110,11 @@ const formattedCookies = cookieArray.map(line => {
 ```typescript
 Web().domStorageAccess(true) // 开启 DOM 存储 例如 微信文章 需要
 ```
+
+### 适配 Tablet、Foldable
+
+利用 Flex 组件，适配了不同宽度的页面。PersonPage 已经适配好。
+
+Flex 文档 <https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-layout-development-flex-layout-V5>
+
+### 
