@@ -1,10 +1,23 @@
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
+import { AppUtil } from '@pura/harmony-utils';
+import { DialogHelper } from '@pura/harmony-dialog';
+import { MMKV } from '@tencent/mmkv';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    // harmony-utils
+    AppUtil.init(this.context);
+    // harmony-dialog
+    DialogHelper.setDefaultConfig((config) => {
+      config.uiContext = this.context;
+    })
+    // mmkv
+    let appCtx = this.context.getApplicationContext();
+    let mmkvRootDir = MMKV.initialize(appCtx);
+    console.info('mmkv rootDir: ', mmkvRootDir);
   }
 
   onDestroy(): void {

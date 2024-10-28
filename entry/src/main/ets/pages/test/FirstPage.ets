@@ -1,6 +1,7 @@
 import { promptAction } from '@kit.ArkUI';
 import { MyCustomDialog } from './components/MyCustomDialog';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { MMKV } from '@tencent/mmkv';
 
 @Entry
 @Component
@@ -157,6 +158,13 @@ struct FirstPage {
           Button("WebPage")
             .onClick(() => {
               this.pathStack.pushPath({ name: "WebPage", param: "http://192.168.1.202:9090/platform-call.html" })
+            })
+
+          Button("test mmkv set")
+            .onClick(() => {
+              let mmkv = MMKV.defaultMMKV();
+              let str: string = 'Hello OpenHarmony from MMKV';
+              mmkv.encodeString('string', str);
             })
 
         }

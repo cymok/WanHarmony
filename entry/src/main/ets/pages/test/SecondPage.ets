@@ -3,6 +3,10 @@ import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { camera, cameraPicker } from '@kit.CameraKit';
 import { promptAction } from '@kit.ArkUI';
+import axios, { AxiosError, AxiosResponse } from '@ohos/axios';
+import { ToastUtil } from '@pura/harmony-utils';
+import { DialogHelper } from '@pura/harmony-dialog';
+import { MMKV } from '@tencent/mmkv';
 
 @Builder
 export function SecondPageBuilder(name: string, param: string) {
@@ -139,6 +143,41 @@ struct SecondPage {
             .width(200)
             .height(200)
         }
+
+        Button("test axios")
+          .onClick(() => {
+            axios.request({
+              method: "get",
+              url: "https://ohpm.openharmony.cn/"
+            }).then((response: AxiosResponse) => {
+              console.info('result:' + JSON.stringify(response.data));
+            }).catch((error: AxiosError) => {
+              console.error(error.message);
+            })
+          })
+
+        Button("test harmony-utils")
+          .onClick(() => {
+            ToastUtil.showToast("测试 ToastUtil")
+          })
+
+        Button("test harmony-dialog")
+          .onClick(() => {
+            DialogHelper.showTipsDialog({
+              content: "test showTipsDialog",
+              onAction: () => {
+                ToastUtil.showShort("ok")
+              }
+            })
+          })
+
+        Button("test mmkv get")
+          .onClick(() => {
+            let mmkv = MMKV.defaultMMKV();
+            let str = mmkv.decodeString('string');
+            console.info(`mmkv decodeString: `, str)
+            ToastUtil.showToast(str)
+          })
 
       }
       .width('100%')
