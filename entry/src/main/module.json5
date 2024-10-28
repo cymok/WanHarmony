@@ -62,6 +62,17 @@
           "when": "inuse"
         }
       },
+      {
+        // 相机权限
+        "name": "ohos.permission.CAMERA",
+        "reason": "$string:Network_Reason",
+        "usedScene": {
+          "abilities": [
+            "FormAbility"
+          ],
+          "when": "inuse"
+        }
+      },
     ]
   }
 }

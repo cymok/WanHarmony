@@ -17,6 +17,10 @@
       "name": "Network_Reason",
       "value": "请求网络进行数据同步"
     },
+    {
+      "name": "Network_Camera",
+      "value": "使用相机进行拍照"
+    },
 
     {
       "name": "tab0",
