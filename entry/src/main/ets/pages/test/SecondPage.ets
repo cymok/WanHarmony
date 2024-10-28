@@ -7,6 +7,7 @@ import axios, { AxiosError, AxiosResponse } from '@ohos/axios';
 import { ToastUtil } from '@pura/harmony-utils';
 import { DialogHelper } from '@pura/harmony-dialog';
 import { MMKV } from '@tencent/mmkv';
+import { showDialogAddress, toast } from '@abner/dialog';
 
 @Builder
 export function SecondPageBuilder(name: string, param: string) {
@@ -167,6 +168,18 @@ struct SecondPage {
               content: "test showTipsDialog",
               onAction: () => {
                 ToastUtil.showShort("ok")
+              }
+            })
+          })
+
+        Button("test dialog 城市地址弹窗")
+          .onClick(() => {
+            showDialogAddress({
+              titleBarAttribute: {
+                titleText: "城市地址弹窗",
+              },
+              confirmClick: (value, index) => {
+                toast(value.toString())
               }
             })
           })

@@ -32,13 +32,25 @@ api 和官方网站 <https://www.wanandroid.com>
 
 <img src="pictrue/pic_code.png" alt="Alt text" width="1080">
 
-## todo
+## 功能和技术点
 
-- 调用第三方 App，例如：浏览器、邮件应用、应用商店
+- [x] 网络：使用原生 NetworkKit 的 http 进行网络请求（可选三方库 @ohos/axios）
+- [x] 图片：使用原生 Image（可选三方库 @ohos/imageknife）
+- [x] 状态管理：使用 V1 稳定版。
+- [x] 数据持久化：使用原生 PersistentStorage 持久化存储做 cookies 的处理（可选三方库 @tencent/mmkv）
+- [x] 页面路由：原生 NavPathStack + Navigation + NavDestination（可选三方库 @hadss/hmrouter、@hzw/zrouter）
+- [x] 首页使用 Tabs 组件，自定义 tabBar
+- [x] 页面刷新和加载更多：使用原生 Refresh 组件的 onRefreshing 进行刷新；使用 List 的 onReachEnd 进行加载更多。（可选三方库 @abner/refresh、@ohos/pulltorefresh）
+- [x] 适配不同宽度的页面，PersonPage 已使用 Flex 适配
 
-- Web 页面，收藏、刷新、复制链接、从浏览器打开、分享
+---
 
-- 完善其它接口的页面
+- [ ] 调用第三方 App，例如：浏览器、邮件应用、应用商店
+- [ ] Web 页面，收藏、刷新、复制链接、从浏览器打开、分享
+- [ ] 浏览历史，本地数据处理，可使用简单数据存储（@tencent/mmkv）或数据库（@liushengyi/smartdb、@ohos/dataorm）
+
+- [ ] 完善其它接口的页面
+- [ ] 引入 apm_harmony_sdk（APMSDK 拥有以下应用监控能力：采集上报App启动性能、崩溃、卡顿、错误信息、网络请求、终端设备、自定义事件等）
 
 ## 开发过程中的一些记录
 
