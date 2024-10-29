@@ -1,4 +1,5 @@
 import { router, uiObserver } from '@kit.ArkUI';
+import { log } from '../../../utils/LogUtils';
 
 @Entry
 @Component
@@ -9,50 +10,50 @@ struct ParentComponent {
     let routerInfo = this.queryRouterPageInfo()
     if (info.pageId == routerInfo?.pageId) {
       if (info.state == uiObserver.RouterPageState.ABOUT_TO_APPEAR) {
-        console.info("listener ABOUT_TO_APPEAR");
+        log("listener ABOUT_TO_APPEAR");
       } else if (info.state == uiObserver.RouterPageState.ABOUT_TO_DISAPPEAR) {
-        console.info("listener ABOUT_TO_DISAPPEAR");
+        log("listener ABOUT_TO_DISAPPEAR");
       } else if (info.state == uiObserver.RouterPageState.ON_PAGE_SHOW) {
-        console.info("listener ON_PAGE_SHOW");
+        log("listener ON_PAGE_SHOW");
       } else if (info.state == uiObserver.RouterPageState.ON_PAGE_HIDE) {
-        console.info("listener ON_PAGE_HIDE");
+        log("listener ON_PAGE_HIDE");
       } else if (info.state == uiObserver.RouterPageState.ON_BACK_PRESS) {
-        console.info("listener ON_BACK_PRESS");
+        log("listener ON_BACK_PRESS");
       }
     }
   }
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onPageShow() {
-    console.info('page onPageShow');
+    log('page onPageShow');
   }
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onPageHide() {
-    console.info('page onPageHide');
+    log('page onPageHide');
   }
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onBackPress() {
-    console.info('page onBackPress');
+    log('page onBackPress');
     this.btnColor = "#FFEE0606";
     return true // 返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑，不设置返回值按照false处理
   }
 
   // 组件生命周期
   aboutToAppear() {
-    console.info('ParentComponent aboutToAppear');
+    log('ParentComponent aboutToAppear');
     // uiObserver.on('routerPageUpdate', this.listener); // 在生命周期开始时 注册 listener
   }
 
   // 组件生命周期
   onDidBuild() {
-    console.info('ParentComponent onDidBuild');
+    log('ParentComponent onDidBuild');
   }
 
   // 组件生命周期
   aboutToDisappear() {
-    console.info('ParentComponent aboutToDisappear');
+    log('ParentComponent aboutToDisappear');
     // uiObserver.off('routerPageUpdate', this.listener); // 在生命周期结束时 注销 listener
   }
 
@@ -84,17 +85,17 @@ struct ChildComponent {
 
   // 组件生命周期
   aboutToAppear() {
-    console.info('[lifeCycle] ChildComponent aboutToAppear');
+    log('[lifeCycle] ChildComponent aboutToAppear');
   }
 
   // 组件生命周期
   onDidBuild() {
-    console.info('[lifeCycle] ChildComponent onDidBuild');
+    log('[lifeCycle] ChildComponent onDidBuild');
   }
 
   // 组件生命周期
   aboutToDisappear() {
-    console.info('[lifeCycle] ChildComponent aboutToDisappear');
+    log('[lifeCycle] ChildComponent aboutToDisappear');
   }
 
   build() {

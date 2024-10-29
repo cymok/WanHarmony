@@ -3,6 +3,8 @@ import { DataX } from '../data/ArticlesTree'
 import { ArticleComponent } from './components/ArticleComponent'
 import { inputMethod } from '@kit.IMEKit'
 import { promptAction } from '@kit.ArkUI'
+import { toast } from '../utils/ToastUtils'
+import { log } from '../utils/LogUtils'
 
 let service: WanService
 
@@ -89,10 +91,10 @@ export struct SearchPage {
                   this.pathStack?.pushPathByName("WebPage", item.link, (popInfo) => {
                     const result = popInfo.result as Record<string, string>
                     if (result) {
-                      console.info(`<<<<<<${result.result}`)
+                      log(`<<<<<<${result.result}`)
                     }
                   })
-                  console.info("跳转 WebPage")
+                  log("跳转 WebPage")
                 })
               })
             }
@@ -145,9 +147,7 @@ export struct SearchPage {
     service.search(this.searchKey, this.currentPage).then(result => {
       if (this.currentPage == 0) {
         if (result.datas.length == 0) {
-          promptAction.showToast({
-            message: "没有搜索到相关文章，请更换关键词再尝试"
-          })
+          toast("没有搜索到相关文章，请更换关键词再尝试")
         }
         // 加载首页
         this.searchList = result.datas // 不要清空数组再 concat，否则页面会有一瞬间变空

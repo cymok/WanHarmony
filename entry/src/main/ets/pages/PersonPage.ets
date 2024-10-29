@@ -1,6 +1,8 @@
 import { UserService } from '../api/service/UserService';
 import { SupperUserInfo } from '../data/UserInfo';
 import { promptAction } from '@kit.ArkUI';
+import { toast } from '../utils/ToastUtils';
+import { log } from '../utils/LogUtils';
 
 let service: UserService
 
@@ -87,12 +89,12 @@ export struct PersonComponent {
                     this.pathStack?.pushPathByName("LoginPage", "", (popInfo) => {
                       const result = popInfo.result as Record<string, string>
                       if (result) {
-                        console.info(`<<<<<<${result.result}`)
+                        log(`<<<<<<${result.result}`)
                         // 登录接口返回的数据不全 后续获取完整数据
                         this.getUserInfo()
                       }
                     })
-                    console.info("跳转 LoginPage")
+                    log("跳转 LoginPage")
                   }
                 }
               }
@@ -129,9 +131,7 @@ export struct PersonComponent {
         .margin({ top: 10 })
         .padding(16)
         .onClick(() => {
-          promptAction.showToast({
-            message: "开发中"
-          })
+          toast("开发中")
         })
 
         Row() {
@@ -153,9 +153,7 @@ export struct PersonComponent {
         .margin({ top: 10 })
         .padding(16)
         .onClick(() => {
-          promptAction.showToast({
-            message: "开发中"
-          })
+          toast("开发中")
         })
 
         Row() {
@@ -172,9 +170,7 @@ export struct PersonComponent {
         .margin({ top: 1 })
         .padding(16)
         .onClick(() => {
-          promptAction.showToast({
-            message: "开发中"
-          })
+          toast("开发中")
         })
 
         Row() {
@@ -191,9 +187,7 @@ export struct PersonComponent {
         .margin({ top: 1 })
         .padding(16)
         .onClick(() => {
-          promptAction.showToast({
-            message: "开发中"
-          })
+          toast("开发中")
         })
 
         Row() {
@@ -210,9 +204,13 @@ export struct PersonComponent {
         .margin({ top: 1 })
         .padding(16)
         .onClick(() => {
-          promptAction.showToast({
-            message: "开发中"
+          this.pathStack?.pushPathByName("HistoryPage", "", (popInfo) => {
+            const result = popInfo.result as Record<string, string>
+            if (result) {
+              log(`<<<<<<${result.result}`)
+            }
           })
+          log("跳转 HistoryPage")
         })
 
         Row() {
@@ -232,10 +230,10 @@ export struct PersonComponent {
           this.pathStack?.pushPathByName("SettingsPage", "", (popInfo) => {
             const result = popInfo.result as Record<string, string>
             if (result) {
-              console.info(`<<<<<<${result.result}`)
+              log(`<<<<<<${result.result}`)
             }
           })
-          console.info("跳转 SettingsPage")
+          log("跳转 SettingsPage")
         })
 
       }

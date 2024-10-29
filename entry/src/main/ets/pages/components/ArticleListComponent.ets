@@ -1,4 +1,5 @@
 import { Articles, DataX } from '../../data/ArticlesTree';
+import { log } from '../../utils/LogUtils';
 import { ArticleComponent } from './ArticleComponent';
 
 @Component
@@ -37,10 +38,10 @@ export struct ArticleListComponent {
               this.pathStack?.pushPathByName("WebPage", item.link, (popInfo) => {
                 const result = popInfo.result as Record<string, string>
                 if (result) {
-                  console.info(`<<<<<<${result.result}`)
+                  log(`<<<<<<${result.result}`)
                 }
               })
-              console.info("跳转 WebPage")
+              log("跳转 WebPage")
             })
           });
         }
@@ -63,10 +64,10 @@ export struct ArticleListComponent {
 
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus)
+        log('Refresh onStatueChange state is ' + refreshStatus)
       })
       .onOffsetChange((value: number) => {
-        console.info('Refresh onOffsetChange offset:' + value)
+        log('Refresh onOffsetChange offset:' + value)
       })
       .onRefreshing(() => {
         setTimeout(() => { // 延迟后 恢复可刷新状态

@@ -1,7 +1,7 @@
 import { SupperUserInfo } from '../data/UserInfo';
 import { UserService } from '../api/service/UserService';
-import { promptAction } from '@kit.ArkUI';
 import { ApiException } from '../api/ApiResult';
+import { toast } from '../utils/ToastUtils';
 
 let service: UserService
 
@@ -85,13 +85,9 @@ export struct LoginPage {
       this.pathStack.pop({ result: "我是从 LoginPage 返回的数据" })
     }).catch((err: Error) => {
       if (err instanceof ApiException) {
-        promptAction.showToast({
-          message: `登录失败（${err.message}）`
-        })
+        toast("登录失败")
       } else {
-        promptAction.showToast({
-          message: '登录失败'
-        })
+        toast("登录失败")
       }
       console.error(`PersonComponent：err = ${err}`);
     })

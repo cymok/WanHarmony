@@ -34,69 +34,20 @@ api 和官方网站 <https://www.wanandroid.com>
 
 ## 功能和技术点
 
-- [x] 网络：使用原生 NetworkKit 的 http 进行网络请求（可选三方库 @ohos/axios）
+- [x] 网络：使用原生 NetworkKit 的 http 进行网络请求（可选三方库 @ohos/axios），cookies 使用原生 PersistentStorage 持久化存储（可选三方库 @tencent/mmkv）
 - [x] 图片：使用原生 Image（可选三方库 @ohos/imageknife）
 - [x] 状态管理：使用 V1 稳定版。
-- [x] 数据持久化：使用原生 PersistentStorage 持久化存储做 cookies 的处理（可选三方库 @tencent/mmkv）
 - [x] 页面路由：原生 NavPathStack + Navigation + NavDestination（可选三方库 @hadss/hmrouter、@hzw/zrouter）
 - [x] 首页使用 Tabs 组件，自定义 tabBar
 - [x] 页面刷新和加载更多：使用原生 Refresh 组件的 onRefreshing 进行刷新；使用 List 的 onReachEnd 进行加载更多。（可选三方库 @abner/refresh、@ohos/pulltorefresh）
 - [x] 适配不同宽度的页面，PersonPage 已使用 Flex 适配
+- [x] 浏览历史，侧滑删除使用 @abner/refresh，时间格式化使用 JavaScript 库 dayjs，存储使用原生 PersistentStorage 持久化存储（可选三方库 @tencent/mmkv、@liushengyi/smartdb、@ohos/dataorm）
 
 ---
 
-- [ ] 调用第三方 App，例如：浏览器、邮件应用、应用商店
-- [ ] Web 页面，收藏、刷新、复制链接、从浏览器打开、分享
-- [ ] 浏览历史，本地数据处理，可使用简单数据存储（@tencent/mmkv）或数据库（@liushengyi/smartdb、@ohos/dataorm）
-
 - [ ] 完善其它接口的页面
-- [ ] 引入 apm_harmony_sdk（APMSDK 拥有以下应用监控能力：采集上报App启动性能、崩溃、卡顿、错误信息、网络请求、终端设备、自定义事件等）
 
 ## 开发过程中的一些记录
-
-### 接口要求以表单提交参数
-
-即 `Content-Type = application/x-www-form-urlencoded`，那么，参数是要以键值对形式提交的（`a=b&c=d`），而不是 json
-字符串（`{a:b,c:d}`），并且是经过 UrlEncoded 的
-
-```typescript
-httpRequest.request(
-  url,
-  {
-    method: http.RequestMethod.POST,
-    header: {
-      // 'Content-Type': 'application/json' // 数据以 JSON 格式发送，通常是一个字符串化的对象。
-      'Content-Type': 'application/x-www-form-urlencoded' // 数据以键值对形式发送，格式为 key1=value1&key2=value2。特殊字符会被编码
-    },
-    // extraData: requestJson,
-    extraData: JsonUtils.jsonToUrlEncoded(requestJson),
-  },
-  (err, data) => {
-    if (!err) {
-      console.log(`data.responseCode = ${data.responseCode}`)
-      let obj: ApiResult<UserInfo>
-      if (data.responseCode == 200) {
-        // 接口返回
-        // obj = JsonUtils.json2Obj<ApiResult<UserInfo>>(data.result.toString())
-        obj = JSON.parse(data.result.toString()) as ApiResult<UserInfo>
-        console.log(`obj = ${obj}`)
-        console.log(`obj.errorCode = ${obj.errorCode}`)
-        if (obj.errorCode == 0) {
-          // 接口正常返回
-          resolve(obj);
-        } else {
-          // 接口错误码
-          let apiErr = new Error(obj.errorMsg)
-          reject(apiErr)
-        }
-      }
-    } else {
-      console.error(`err = ${err}`)
-      reject(err);
-    }
-    httpRequest.destroy();
-  });
-```
 
 ### cookies 的处理
 
@@ -132,7 +83,5 @@ Web().domStorageAccess(true) // 开启 DOM 存储 例如 微信文章 需要
 ### 适配 Tablet、Foldable
 
 利用 Flex 组件，适配了不同宽度的页面。PersonPage 已经适配好。
-
-Flex 文档 <https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-layout-development-flex-layout-V5>
 
 ### 

@@ -1,4 +1,5 @@
 import { promptAction } from "@kit.ArkUI"
+import { log } from "../../utils/LogUtils"
 
 @Builder
 export function ThirdPageBuilder(name: string, param: string) {
@@ -12,7 +13,7 @@ struct ThirdPage {
   pathStack: NavPathStack = new NavPathStack()
 
   aboutToAppear(): void {
-    console.info(`构造传递参数 param：${this.param}`)
+    log(`构造传递参数 param：${this.param}`)
   }
 
   build() {
@@ -35,7 +36,7 @@ struct ThirdPage {
     .hideTitleBar(true)
     .onReady((context) => {
       this.pathStack = context.pathStack
-      console.info(`pathStack 获取参数：${this.param}`)
+      log(`pathStack 获取参数：${this.param}`)
     })
     .onBackPressed(() => {
 

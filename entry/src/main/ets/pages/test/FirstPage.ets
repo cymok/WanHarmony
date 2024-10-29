@@ -1,7 +1,7 @@
-import { promptAction } from '@kit.ArkUI';
 import { MyCustomDialog } from './components/MyCustomDialog';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { MMKV } from '@tencent/mmkv';
+import { toast } from '../../utils/ToastUtils';
+import { log } from '../../utils/LogUtils';
 
 @Entry
 @Component
@@ -14,23 +14,17 @@ struct FirstPage {
   dialogController = new CustomDialogController({
     builder: MyCustomDialog({
       cancel: () => {
-        promptAction.showToast({
-          message: "cancel"
-        })
+        toast("cancel")
       },
       confirm: () => {
-        promptAction.showToast({
-          message: "confirm"
-        })
+        toast("confirm")
       },
     }),
     // gridCount 等其它属性 更默认弹窗差不多
     gridCount: 3,
     backgroundColor: Color.Gray,
     cancel: () => {
-      promptAction.showToast({
-        message: "cancel"
-      })
+      toast("cancel")
     },
   })
 
@@ -52,10 +46,8 @@ struct FirstPage {
           Divider() // 分割线，设置 height 不会增加线的宽度 只会增加组件本身的高度
           Button("showToast")
             .onClick(() => {
-              promptAction.showToast({
-                message: "按钮被点击了"
-              })
-              console.info("按钮被点击了")
+              toast("按钮被点击了")
+              log("按钮被点击了")
             })
             .alignRules({
               center: { anchor: '__container__', align: VerticalAlign.Center },
@@ -74,9 +66,9 @@ struct FirstPage {
                   return
                 }
                 this.result2 = result.result
-                console.info(`pathStack 获取返回参数：${popInfo.info.name}：${result.result}`)
+                log(`pathStack 获取返回参数：${popInfo.info.name}：${result.result}`)
               })
-              console.info("跳转 SecondPage")
+              log("跳转 SecondPage")
             })
           Text("SecondPage result：" + this.result2)
           Button("跳转 SecondPage")
@@ -91,9 +83,9 @@ struct FirstPage {
                   return
                 }
                 this.result3 = result.result
-                console.info(`pathStack 获取返回参数：${popInfo.info.name}：${result.result}`)
+                log(`pathStack 获取返回参数：${popInfo.info.name}：${result.result}`)
               })
-              console.info("跳转 ThirdPage")
+              log("跳转 ThirdPage")
             })
           Text("ThirdPage result：" + this.result3)
 
@@ -121,18 +113,14 @@ struct FirstPage {
                   gridCount: 3, // 可控制弹窗宽度
                   // offset: { dx: 0, dy: -20 },
                   cancel: () => { // 点击外部取消 和 返回键取消 的回调
-                    promptAction.showToast({
-                      message: "弹窗取消"
-                    })
+                    toast("弹窗取消")
                   },
                   primaryButton: {
                     value: '取消',
                     // style: DialogButtonStyle.DEFAULT,
                     fontColor: Color.Gray,
                     action: () => {
-                      promptAction.showToast({
-                        message: "取消 is clicked"
-                      })
+                      toast("取消 is clicked")
                     }
                   },
                   secondaryButton: {
@@ -141,9 +129,7 @@ struct FirstPage {
                     // style: DialogButtonStyle.HIGHLIGHT,
                     value: '确定',
                     action: () => {
-                      promptAction.showToast({
-                        message: "确定 is clicked"
-                      })
+                      toast("确定 is clicked")
                     }
                   }
                 }
@@ -192,22 +178,16 @@ struct FirstPage {
       .priorityGesture(
         PinchGesture()
           .onActionEnd((event: GestureEvent) => {
-            console.info('end scale:' + event.scale)
+            log('end scale:' + event.scale)
             // 手指分开，减少列数以放大item，触发阈值可以自定义，示例为2
             if (event.scale > 2) {
               // 放大
-              promptAction.showToast({
-                message: "放大"
-              })
-              console.log("放大")
-              hilog.info(1, "testTag", "放大")
+              toast("放大")
+              log("放大")
             } else if (event.scale < 0.6) {
               // 缩小
-              promptAction.showToast({
-                message: "缩小"
-              })
-              console.log("缩小")
-              hilog.info(0, "testTag", "缩小")
+              toast("缩小")
+              log("缩小")
             }
 
           })

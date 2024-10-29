@@ -2,6 +2,8 @@ import { SupperUserInfo } from '../data/UserInfo';
 import { promptAction } from '@kit.ArkUI';
 import { UserService } from '../api/service/UserService';
 import { AppUtils } from '../utils/AppUtils';
+import { toast } from '../utils/ToastUtils';
+import { log } from '../utils/LogUtils';
 
 let service: UserService
 
@@ -16,14 +18,8 @@ PersistentStorage.persistProp<SupperUserInfo>("supperUserInfo", null)
 export struct SettingsPage {
   @StorageLink('supperUserInfo') supperUserInfo: SupperUserInfo | null = null;
   pathStack: NavPathStack = new NavPathStack()
-  @State versionCode: number = 0
-  @State versionName: string = ""
 
   aboutToAppear(): void {
-    AppUtils.getBundleInfo().then(bundleInfo => {
-      this.versionCode = bundleInfo.versionCode
-      this.versionName = bundleInfo.versionName
-    })
     service = new UserService();
   }
 
@@ -44,9 +40,7 @@ export struct SettingsPage {
           .backgroundColor(Color.White)
           .padding(16)
           .onClick(() => {
-            promptAction.showToast({
-              message: "开发中"
-            })
+            toast("开发中")
           })
 
           Row() {
@@ -63,9 +57,7 @@ export struct SettingsPage {
           .margin({ top: 1 })
           .padding(16)
           .onClick(() => {
-            promptAction.showToast({
-              message: "开发中"
-            })
+            toast("开发中")
           })
 
           Row() {
@@ -88,10 +80,10 @@ export struct SettingsPage {
             this.pathStack?.pushPathByName("WebPage", "wanandroid.com", (popInfo) => {
               const result = popInfo.result as Record<string, string>
               if (result) {
-                console.info(`<<<<<<${result.result}`)
+                log(`<<<<<<${result.result}`)
               }
             })
-            console.info("跳转 WebPage")
+            log("跳转 WebPage")
           })
 
           Row() {
@@ -108,9 +100,7 @@ export struct SettingsPage {
           .margin({ top: 1 })
           .padding(16)
           .onClick(() => {
-            promptAction.showToast({
-              message: "开发中"
-            })
+            toast("开发中")
           })
 
           Row() {
@@ -127,9 +117,7 @@ export struct SettingsPage {
           .margin({ top: 1 })
           .padding(16)
           .onClick(() => {
-            promptAction.showToast({
-              message: "开发中"
-            })
+            toast("开发中")
           })
 
           Row() {
@@ -146,15 +134,13 @@ export struct SettingsPage {
           .margin({ top: 1 })
           .padding(16)
           .onClick(() => {
-            promptAction.showToast({
-              message: "开发中"
-            })
+            toast("开发中")
           })
 
           Row() {
             Text("关于 APP")
             Blank()
-            Text(`Version ${this.versionName}`)
+            Text(`Version ${AppUtils.getBundleInfo().versionName}`)
               .fontSize(14)
               .fontColor($r("app.color.secondaryText"))
             Image($r("app.media.icon_arrow_right"))
@@ -168,9 +154,7 @@ export struct SettingsPage {
           .margin({ top: 1 })
           .padding(16)
           .onClick(() => {
-            promptAction.showToast({
-              message: `versionCode: ${this.versionCode}`
-            })
+            toast(`versionCode: ${AppUtils.getBundleInfo().versionCode}`)
           })
 
           // 已登录才显示

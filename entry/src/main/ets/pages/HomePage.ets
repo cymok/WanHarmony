@@ -2,6 +2,7 @@ import { WanService } from '../api/service/WanService';
 import { DataX } from '../data/ArticlesTree';
 import { ArticleComponent } from './components/ArticleComponent';
 import { BannerItem } from '../data/BannerItem';
+import { log } from '../utils/LogUtils';
 
 let service: WanService
 
@@ -67,10 +68,10 @@ export struct HomePage {
                       this.pathStack?.pushPathByName("WebPage", item.url, (popInfo) => {
                         const result = popInfo.result as Record<string, string>
                         if (result) {
-                          console.info(`<<<<<<${result.result}`)
+                          log(`<<<<<<${result.result}`)
                         }
                       })
-                      console.info("跳转 WebPage")
+                      log("跳转 WebPage")
                     })
                 })
               }
@@ -90,10 +91,10 @@ export struct HomePage {
                   this.pathStack?.pushPathByName("WebPage", item.link, (popInfo) => {
                     const result = popInfo.result as Record<string, string>
                     if (result) {
-                      console.info(`<<<<<<${result.result}`)
+                      log(`<<<<<<${result.result}`)
                     }
                   })
-                  console.info("跳转 WebPage")
+                  log("跳转 WebPage")
                 })
               })
             }
@@ -107,10 +108,10 @@ export struct HomePage {
                   this.pathStack?.pushPathByName("WebPage", item.link, (popInfo) => {
                     const result = popInfo.result as Record<string, string>
                     if (result) {
-                      console.info(`<<<<<<${result.result}`)
+                      log(`<<<<<<${result.result}`)
                     }
                   })
-                  console.info("跳转 WebPage")
+                  log("跳转 WebPage")
                 })
               })
             }
@@ -133,10 +134,10 @@ export struct HomePage {
         })
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus)
+        log('Refresh onStatueChange state is ' + refreshStatus)
       })
       .onOffsetChange((value: number) => {
-        console.info('Refresh onOffsetChange offset:' + value)
+        log('Refresh onOffsetChange offset:' + value)
       })
       .onRefreshing(() => {
         setTimeout(() => { // 延迟后 恢复可刷新状态

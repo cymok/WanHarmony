@@ -33,6 +33,14 @@
       }
     },
     {
+      "name": "HistoryPage",
+      "pageSourceFile": "src/main/ets/pages/HistoryPage.ets",
+      "buildFunction": "HistoryPageBuilder",
+      "data": {
+        "description": "this is HistoryPage"
+      }
+    },
+    {
       "name": "WebPage",
       "pageSourceFile": "src/main/ets/pages/WebPage.ets",
       "buildFunction": "WebPageBuilder",

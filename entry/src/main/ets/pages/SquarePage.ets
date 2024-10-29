@@ -1,4 +1,5 @@
 import { WanService } from '../api/service/WanService';
+import { log } from '../utils/LogUtils';
 import { ArticleListComponent as ArticleListComponent } from './components/ArticleListComponent';
 
 let service: WanService
@@ -23,10 +24,10 @@ export struct SquareComponent {
           this.pathStack?.pushPathByName("SearchPage", "", (popInfo) => {
             const result = popInfo.result as Record<string, string>
             if (result) {
-              console.info(`<<<<<<${result.result}`)
+              log(`<<<<<<${result.result}`)
             }
           })
-          console.info("跳转 SearchPage")
+          log("跳转 SearchPage")
         })
 
       Tabs({

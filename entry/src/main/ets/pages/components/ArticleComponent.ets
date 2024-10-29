@@ -75,7 +75,9 @@ export function ArticleComponent(item: DataX, index: number, onClick: () => void
       }
       .width("100%")
 
-      Text(`[ ${index + 1} ]`).fontSize(12).fontColor(0x30000000)
+      Text(`[ ${index + 1} ]`)
+        .fontSize(12)
+        .fontColor(0x30000000)
     }
     .onClick(onClick)
   }

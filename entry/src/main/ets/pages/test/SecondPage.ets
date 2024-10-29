@@ -2,12 +2,12 @@ import { fileIo, fileUri, picker } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { camera, cameraPicker } from '@kit.CameraKit';
-import { promptAction } from '@kit.ArkUI';
 import axios, { AxiosError, AxiosResponse } from '@ohos/axios';
 import { ToastUtil } from '@pura/harmony-utils';
 import { DialogHelper } from '@pura/harmony-dialog';
 import { MMKV } from '@tencent/mmkv';
 import { showDialogAddress, toast } from '@abner/dialog';
+import { log, logError } from '../../utils/LogUtils';
 
 @Builder
 export function SecondPageBuilder(name: string, param: string) {
@@ -25,7 +25,7 @@ struct SecondPage {
   @State videoSrc: string = '';
 
   aboutToAppear(): void {
-    console.info(`构造传递参数 param：${this.param}`)
+    log(`构造传递参数 param：${this.param}`)
   }
 
   build() {
@@ -60,9 +60,9 @@ struct SecondPage {
               //文件选择成功后，返回被选中文档的uri结果集。
               uris = documentSelectResult;
               this.uri = documentSelectResult[0]
-              console.info('documentViewPicker.select to file succeed and uris are:' + uris);
+              log('documentViewPicker.select to file succeed and uris are:' + uris);
             }).catch((err: BusinessError) => {
-              console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+              logError(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
             })
           })
 
@@ -87,9 +87,9 @@ struct SecondPage {
               //文件选择成功后，返回被选中音频的uri结果集。
               uris = audioSelectResult;
               this.audioUri = audioSelectResult[0];
-              console.info('audioViewPicker.select to file succeed and uri is:' + uris);
+              log('audioViewPicker.select to file succeed and uri is:' + uris);
             }).catch((err: BusinessError) => {
-              console.error(`Invoke audioViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+              logError(`Invoke audioViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
             })
           })
 
@@ -100,15 +100,13 @@ struct SecondPage {
             let cameraArray: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
             if (cameraArray != undefined && cameraArray.length > 0) {
               for (let index = 0; index < cameraArray.length; index++) {
-                console.info('cameraId : ' + cameraArray[index].cameraId); // 获取相机ID
-                console.info('cameraPosition : ' + cameraArray[index].cameraPosition); // 获取相机位置
-                console.info('cameraType : ' + cameraArray[index].cameraType); // 获取相机类型
-                console.info('connectionType : ' + cameraArray[index].connectionType); // 获取相机连接类型
+                log('cameraId : ' + cameraArray[index].cameraId); // 获取相机ID
+                log('cameraPosition : ' + cameraArray[index].cameraPosition); // 获取相机位置
+                log('cameraType : ' + cameraArray[index].cameraType); // 获取相机类型
+                log('connectionType : ' + cameraArray[index].connectionType); // 获取相机连接类型
               }
             } else {
-              promptAction.showToast({
-                message: "当前设备不支持拍照"
-              })
+              toast("当前设备不支持拍照")
               return
             }
 
@@ -128,7 +126,7 @@ struct SecondPage {
                 // 拍照，录像
                 [cameraPicker.PickerMediaType.PHOTO, cameraPicker.PickerMediaType.VIDEO],
                 pickerProfile);
-            console.info(`picker resultCode: ${result.resultCode},resultUri: ${result.resultUri},mediaType: ${result.mediaType}`);
+            log(`picker resultCode: ${result.resultCode},resultUri: ${result.resultUri},mediaType: ${result.mediaType}`);
             if (result.resultCode == 0) {
               if (result.mediaType === cameraPicker.PickerMediaType.PHOTO) {
                 this.imgSrc = result.resultUri;
@@ -151,9 +149,9 @@ struct SecondPage {
               method: "get",
               url: "https://ohpm.openharmony.cn/"
             }).then((response: AxiosResponse) => {
-              console.info('result:' + JSON.stringify(response.data));
+              log('result:' + JSON.stringify(response.data));
             }).catch((error: AxiosError) => {
-              console.error(error.message);
+              logError(error.message);
             })
           })
 
@@ -188,7 +186,7 @@ struct SecondPage {
           .onClick(() => {
             let mmkv = MMKV.defaultMMKV();
             let str = mmkv.decodeString('string');
-            console.info(`mmkv decodeString: `, str)
+            log(`mmkv decodeString: `, str)
             ToastUtil.showToast(str)
           })
 
@@ -202,7 +200,7 @@ struct SecondPage {
     .hideTitleBar(true)
     .onReady((context) => {
       this.pathStack = context.pathStack
-      console.info(`pathStack 获取参数：${this.param}`)
+      log(`pathStack 获取参数：${this.param}`)
     })
     .onBackPressed(() => {
 

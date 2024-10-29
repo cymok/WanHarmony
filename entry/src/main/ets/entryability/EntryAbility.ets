@@ -4,6 +4,7 @@ import { window } from '@kit.ArkUI';
 import { AppUtil } from '@pura/harmony-utils';
 import { DialogHelper } from '@pura/harmony-dialog';
 import { MMKV } from '@tencent/mmkv';
+import { log } from '../utils/LogUtils';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -17,7 +18,7 @@ export default class EntryAbility extends UIAbility {
     // mmkv
     let appCtx = this.context.getApplicationContext();
     let mmkvRootDir = MMKV.initialize(appCtx);
-    console.info('mmkv rootDir: ', mmkvRootDir);
+    log('mmkv rootDir: ', mmkvRootDir);
   }
 
   onDestroy(): void {
