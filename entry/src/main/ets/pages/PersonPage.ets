@@ -1,6 +1,5 @@
 import { UserService } from '../api/service/UserService';
 import { SupperUserInfo } from '../data/UserInfo';
-import { promptAction } from '@kit.ArkUI';
 import { toast } from '../utils/ToastUtils';
 import { log } from '../utils/LogUtils';
 

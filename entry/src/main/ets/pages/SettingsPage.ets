@@ -1,5 +1,4 @@
 import { SupperUserInfo } from '../data/UserInfo';
-import { promptAction } from '@kit.ArkUI';
 import { UserService } from '../api/service/UserService';
 import { AppUtils } from '../utils/AppUtils';
 import { toast } from '../utils/ToastUtils';

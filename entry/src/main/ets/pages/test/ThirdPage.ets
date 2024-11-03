@@ -1,5 +1,4 @@
-import { promptAction } from "@kit.ArkUI"
-import { log } from "../../utils/LogUtils"
+import { log } from '../../utils/LogUtils'
 
 @Builder
 export function ThirdPageBuilder(name: string, param: string) {

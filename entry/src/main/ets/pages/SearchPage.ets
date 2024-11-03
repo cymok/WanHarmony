@@ -2,7 +2,6 @@ import { WanService } from '../api/service/WanService'
 import { DataX } from '../data/ArticlesTree'
 import { ArticleComponent } from './components/ArticleComponent'
 import { inputMethod } from '@kit.IMEKit'
-import { promptAction } from '@kit.ArkUI'
 import { toast } from '../utils/ToastUtils'
 import { log } from '../utils/LogUtils'
 
